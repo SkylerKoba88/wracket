@@ -24,7 +24,7 @@ class NavBar extends LitElement {
             transition: background-color 0.6s ease;
         }
         a:active {
-            visibility: hidden;
+            opacity: 0.7;
         }
         a:visited {
             color: black;
@@ -32,13 +32,13 @@ class NavBar extends LitElement {
     `;
     render() {
         return html`
-            <nav>
-                <a href="/">Home</a>
-                <a href="/shop">Shop</a>
-                <a href="/gallery">Gallery</a>
-                <a href="/about">About</a>
-                <a href="/help">Help</a>
-                <a href="/cart">Cart</a>
+                <nav>
+                <a href="/index.html">Home</a>
+                <a href="/pages/shop.html">Shop</a>
+                <a href="/pages/gallery.html">Gallery</a>
+                <a href="/pages/comingsoon.html">About</a>
+                <a href="/pages/maintenance.html">Help</a>
+                <a href="/pages/product-detail.html">Cart</a>
             </nav>
         `;
     }
