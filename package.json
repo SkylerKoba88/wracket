@@ -8,7 +8,7 @@
     "start": "node App.js",
     "preview": "node App.js",
     "dev": "vite",
-    "build": "vite build"
+    "build": "node ./node_modules/vite/bin/vite.js build"
   },
   "dependencies": {
     "express": "^4.18.4",
