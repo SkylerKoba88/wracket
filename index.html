@@ -3,53 +3,11 @@
 <html lang="en">
 <head>
     <title>Wracket</title>
-    <style>
-        @font-face {
-            font-family: 'Freedom';
-            src: url('/freedom-font/Freedom-10eM.ttf') format('truetype'),
-                 url('/freedom-font/Freedom-nZ4J.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Steiner';
-            src: url('/steiner-font/SteinerLight-JR1o.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        body {
-            background-image: linear-gradient(rgba(86, 7, 64, 0.5), rgba(0, 0, 0, 0.35)), url(images/background.jpg);
-        }
-
-        .letter-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .letter-row img {
-            position: relative;
-            margin-left: -24px;
-            transition: transform 0.2s ease;
-        }
-
-        .letter-row img:first-child {
-            margin-left: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div style="display: flex; flex-direction: column; 
-    justify-content: start; align-items: center; 
-    height: fit-content;;
-    background-color: hsla(323, 100%, 88%, 0.75);
-    margin: 60px;
-    gap: 24px;
-    padding: 24px;">
+    <nav-bar></nav-bar>
+    <div class="wracket-container">
         <h1 style="font-family: 'Freedom', sans-serif; font-size: 1.7rem;">COMING SOON</h1>
 
         <div class="letter-row" alt="wracket">
@@ -64,7 +22,7 @@
         
         <p style="font-family: 'Steiner', sans-serif; font-size: 1.2rem; font-style: italic;">For everyday art lovers</p>
     </div>
-    
 </body>
+<script type="module" src="/components/nav-bar.js"></script>
 <script src="/nudge.js"></script>
 </html>

@@ -1,0 +1,84 @@
+{
+    "items": [
+        {
+            "id": "e01",
+            "name": "Bone Collector Earrings",
+            "img": "/images/bone-collector-earrings.jpg",
+            "category": "apparel",
+            "type": "jewelry",
+            "description": "Upcycled earrings made from minx jawbones.",
+            "long-description": "These earrings are part of the scavenger's collection, upcycled from used jewelry, including minx jawbones. Perfect for those who appreciate the unusual and the unique.",
+            "materials": ["Minx Jawbones", "Plastic Beads", "Miscellaneous Metal Components"],
+            "sizes": [],
+            "quantity": 0,
+            "price": 8.00
+        },
+        {
+            "id": "e02",
+            "name": "Friends 5ever Earrings",
+            "img": "/images/friends-5ever.jpg",
+            "category": "apparel",
+            "type": "jewelry",
+            "description": "Upcycled earrings made from thrifted fastener buttons.",
+            "long-description": "Friends 5ever! As a part of the scavenger's collection, these earrings are upcycled from used jewelry and thrifted fastener buttons. A subtle play on classic friendship jewelry, this pair is just what you're looking for--whether shared between friends or kept as a personal treasure.",
+            "materials": ["Plastic Mother of Pearl Fasteners", "Plastic Beads", "Miscellaneous Metal Components"],
+            "sizes": [],
+            "quantity": 0,
+            "price": 8.00
+        },
+        {
+            "id": "e03",
+            "name": "Forever In Bloom Earrings",
+            "img": "/images/forever-in-bloom.jpg",
+            "category": "apparel",
+            "type": "jewelry",
+            "description": "Upcycled earrings featuring petal-like charms.",
+            "long-description": "The scavenger's collection proudly presents these fantastically fairy-like earrings. Made from upcycled jewelry, this pair is made for the ethereal.",
+            "materials": ["Plastic Petal Charms", "Miscellaneous Metal Components"],
+            "sizes": [],
+            "quantity": 1,
+            "price": 8.00
+        },
+        {
+            "id": "n01",
+            "name": "Ecclectic Necklace",
+            "img": "/images/ecclectic-necklace.jpg",
+            "category": "apparel",
+            "type": "jewelry",
+            "description": "Upcycled necklace made from a variety of materials.",
+            "long-description": "The show stopper from the scavenger's collection is here! Crafted using a total of 18 unique charms, this necklace pairs well with any whimsical style.",
+            "materials": ["Plastic Beads", "Gray Agate", "Wooden Buttons", "Miscellaneous Metal Components"],
+            "sizes": [],
+            "quantity": 0,
+            "price": 15.00
+        },
+        {
+            "id": "e04",
+            "name": "Don't Forget Me Earrings",
+            "img": "/images/dont-forget-me.jpg",
+            "category": "apparel",
+            "type": "jewelry",
+            "description": "Upcycled earrings featuring petal-like charms.",
+            "long-description": "As the final item to the scavenger's collection, this pair of earrings ties up beautifully the art of upcycled jewelry. A classic look for anyone particularly fond of red.",
+            "materials": ["Plastic Beads", "Miscellaneous Metal Components"],
+            "sizes": [],
+            "quantity": 1,
+            "price": 4.00
+        },
+
+        {
+            "id": "s01",
+            "name": "God Complex Tank Top",
+            "img": "/images/god-complex-tank.jpg",
+            "category": "apparel",
+            "type": "top",
+            "description": "Upcycled tank top with isopod print",
+            "long-description": "Feeling like god? Like rolly pollys ? This shirt might just be for you. Wear a tank top that says I am invincible and has a picture of an isopod on it. Do it.",
+            "materials": ["Cotton", "Polyester", "White Cloth Ink"],
+            "sizes": ["Small"],
+            "quantity": 1,
+            "price": 10.00
+        }
+    ]   
+
+}

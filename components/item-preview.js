@@ -1,0 +1,130 @@
+import { LitElement, html, css } from "lit";
+
+export class ItemPreview extends LitElement {
+    static properties = {
+        item: { type: Object },
+        isSoldOut: { type: Boolean}
+    };
+
+    constructor() {
+        super();
+        this.item = {};
+        this.isSoldOut = false;
+    }
+
+    static styles = css`
+        .item-preview {
+            display: block;
+            width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            min-width: 250px;
+            max-width: 250px;
+        }
+        .item-preview:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            #product {
+                transform: scale(1.05);
+            }
+        }
+        p, h4 {
+            padding: 0;
+            margin: 0;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            justify-content: center;
+            text-align: center;
+        }
+        .item-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            text-align: start;
+        }
+        .img-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        #product {
+            width: 100%;
+            height: auto;
+            display: block;
+            justify-self: center;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .overlay {
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left:0;
+            right:0;
+            background: hsla(0, 0%, 100%, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .overlay p {
+            color: white;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+        .overlay img {
+            height: 50%;
+        }
+
+        .img-container.soldout .overlay {
+            opacity: 1;
+        }
+    `;
+
+    toggleSoldOut(item) {
+        if (item.quantity == 0) {
+            this.isSoldOut = true;
+        } else {
+            this.isSoldOut = false;
+        }
+    }
+
+    render() {
+        this.toggleSoldOut(this.item);
+        return html`
+            <div class="item-preview" @click=${() => {
+                if (this.item?.id) {
+                    window.location.href = `/pages/product-detail.html?id=${this.item.id}`;
+                }
+            }}>
+                <div class="img-container ${this.isSoldOut ? 'soldout' : ''}">
+                    <img id="product" src="${this.item.img}" alt="${this.item.name}" />
+                    <div class="overlay">
+                        <p>SOLD</p>
+                        <img src="/images/soldout.svg" alt="sold out" width="100" height="100">
+                        <p>OUT</p>
+                    </div>
+                </div>
+
+                <div class="text">
+                    <h4>${this.item.name}</h4>
+                    <div class="item-details">
+                        <p>${this.item.description}</p>
+                        <p style="width:50%; text-align:end;">Price: $${this.item.price}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+customElements.define("item-preview", ItemPreview);
