@@ -11,9 +11,9 @@
             justify-content: center;
             margin: 1rem 0;
         }
-        button {
-            transition: background-color 0.6s ease;
+        button.search-button {
             padding: 0.5rem;
+            background-color: hsla(323, 100%, 88%, 0.75);
             background: none;
             border: none;
             border-radius: inherit;

@@ -29,6 +29,10 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    --opaque: hsla(323, 100%, 88%, 1);
+    --transparent: hsla(323, 100%, 88%, 0.75);
+    --tint: hsla(323, 100%, 88%, 0.5);
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -56,154 +60,72 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  [data-theme='apparel'] {
+        --opaque: hsla(323, 100%, 88%, 1);
+        --transparent: hsla(323, 100%, 88%, 0.75);
+        --tint: hsla(323, 100%, 88%, 0.5);
+    }
+
+    [data-theme='prints'] {
+        --opaque: hsla(202, 73%, 73%, 1);
+        --transparent: hsla(202, 73%, 73%, 0.75);
+        --tint: hsla(202, 73%, 73%, 0.5);
+    }
+
+    [data-theme='functional'] {
+         --opaque: hsla(275, 52%, 76%, 1);
+        --transparent: hsla(275, 52%, 76%, 0.75);
+        --tint: hsla(275, 52%, 76%, 0.5);
+    }
+
+    [data-theme='misc'] {
+        --opaque: hsla(359, 68%, 74%, 1);
+        --transparent: hsla(359, 68%, 74%, 0.75);
+        --tint: hsla(359, 68%, 74%, 0.5);
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(86, 7, 64, 0.5), rgba(0, 0, 0, 0.35)), url(/background.jpg);
+        font-family: sans-serif;
+        margin: 1.5rem 2.5rem;
+    }
+
+    a {
+        @apply transition-colors;
+    }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    background-image: linear-gradient(rgba(86, 7, 64, 0.5), rgba(0, 0, 0, 0.35)), url(/public/background.jpg);
-    font-family: sans-serif;
-    margin: 1.5rem 2.5rem;
-  }
+@layer components {
+    .wracket-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        height: fit-content;
+        background-color: hsla(323, 100%, 88%, 0.75);
+        margin: 60px;
+        gap: 24px;
+        padding: 24px;
+    }
 
-  a {
-    @apply transition-colors;
-  }
+    .letter-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .letter-row img {
+        position: relative;
+        margin-left: -24px;
+        transition: transform 0.2s ease;
+    }
+
+    .letter-row img:first-child {
+        margin-left: 0;
+    }
 }
-
-        @font-face {
-            font-family: 'Freedom';
-            src: url('/freedom-font/Freedom-10eM.ttf') format('truetype'),
-                 url('/freedom-font/Freedom-nZ4J.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Steiner';
-            src: url('/steiner-font/SteinerLight-JR1o.ttf') format('truetype');
-            font-weight: bold;
-            
-            font-display: swap;
-        }
-
-:root {
-            --opaque: hsla(323, 100%, 88%, 1);
-            --transparent: hsla(323, 100%, 88%, 0.75);
-            --tint: hsla(323, 100%, 88%, 0.5);
-        }
-
-        [data-theme='apparel'] {
-            --opaque: hsla(323, 100%, 88%, 1);
-            --transparent: hsla(323, 100%, 88%, 0.75);
-            --tint: hsla(323, 100%, 88%, 0.5);
-        }
-
-        [data-theme="functional"] {
-            --opaque: hsla(275, 52%, 76%, 1);
-            --transparent: hsla(275, 52%, 76%, 0.75);
-            --tint: hsla(275, 52%, 76%, 0.5);
-        }
-
-        [data-theme="prints"] {
-            --opaque: hsla(202, 73%, 73%, 1);
-            --transparent: hsla(202, 73%, 73%, 0.75);
-            --tint: hsla(202, 73%, 73%, 0.5);
-        }
-
-        [data-theme="misc"] {
-            --opaque: hsla(359, 68%, 74%, 1);
-            --transparent: hsla(359, 68%, 74%, 0.75);
-            --tint: hsla(359, 68%, 74%, 0.5);
-        }
-
-        body {
-            background-image: linear-gradient(rgba(86, 7, 64, 0.5), rgba(0, 0, 0, 0.35)), url(/public/background.jpg);
-            font-family: sans-serif;
-            margin: 1.5rem 2.5rem;
-        }
-
-        .wracket-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            align-items: center;
-            height: fit-content;
-            background-color: hsla(323, 100%, 88%, 0.75);
-            margin: 60px;
-            gap: 24px;
-            padding: 24px;
-        }
-
-        .letter-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .letter-row img {
-            position: relative;
-            margin-left: -24px;
-            transition: transform 0.2s ease;
-        }
-
-        .letter-row img:first-child {
-            margin-left: 0;
-        }
-
-        /*mini game*/
-        #game-container {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 20;
-        }
-
-        #game-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        #game-instructions {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 21;
-            color: white;
-            font-family: 'Steiner', sans-serif;
-            font-size: 1rem;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 14px;
-            padding: 12px 18px;
-            max-width: 90%;
-        }
-
-        #game-ui {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 21;
-            color: #fff;
-            font-family: 'Steiner', sans-serif;
-            pointer-events: none;
-        }
-
-        #game-status {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 21;
-            color: #fff;
-            font-family: 'Steiner', sans-serif;
-            pointer-events: none;
-        }

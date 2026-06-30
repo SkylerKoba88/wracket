@@ -31,7 +31,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 
     return (
         <div className="search-bar">
-                <button onClick={() => {setIsVisible(true)}}>
+                <button className="search-button" onClick={() => {setIsVisible(true)}}>
                     <img className="search-icon" src="/search-icon.svg" alt="search icon" width="25" height="25"/>
                 </button>
                 
