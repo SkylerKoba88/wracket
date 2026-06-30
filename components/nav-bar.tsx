@@ -1,6 +1,7 @@
 "use client";
 import React, {useState, ReactNode} from 'react';
 import './../NavBar.css';
+import Link from 'next/link';
 
 interface NavBarProps {
     //title?: string;
@@ -18,7 +19,7 @@ export const NavBar: React.FC<NavBarProps> = ({
     return (
         <nav>
             <a href="/index.html">Home</a>
-            <a href="app/pages/shop.html">Shop</a>
+            <Link href="/shop">Shop</Link>
             <a href="/pages/gallery.html">Gallery</a>
             <a href="/pages/comingsoon.html">About</a>
             <a href="/pages/maintenance.html">Help</a>
