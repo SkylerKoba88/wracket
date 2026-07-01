@@ -14,20 +14,6 @@ export type InventoryItem = {
 
 const fallbackProducts: InventoryItem[] = [
   {
-    id: "wracket-tee",
-    name: "Wracket Tee",
-    description: "Soft everyday print",
-    longDescription:
-      "A comfortable tee with a bold hand-drawn graphic, made for daily wear and layered styling.",
-    price: 34,
-    category: "apparel",
-    type: "tees",
-    quantity: 8,
-    img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
-    materials: ["100% cotton", "Screen print"],
-    sizes: ["S", "M", "L", "XL"],
-  },
-  {
     id: "studio-print",
     name: "Studio Print",
     description: "Limited edition art print",

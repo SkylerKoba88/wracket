@@ -18,12 +18,11 @@ export const NavBar: React.FC<NavBarProps> = ({
 
     return (
         <nav>
-            <a href="/index.html">Home</a>
+            <Link href="/">Home</Link>
             <Link href="/shop">Shop</Link>
-            <a href="/pages/gallery.html">Gallery</a>
-            <a href="/pages/comingsoon.html">About</a>
-            <a href="/pages/maintenance.html">Help</a>
-            <a href="/pages/product-detail.html">Cart</a>
+            <Link href="/pages/comingsoon.html">About</Link>
+            <Link href="/pages/maintenance.html">Help</Link>
+            <Link href="/pages/product-detail.html">Cart</Link>
         </nav>
 );
 };
