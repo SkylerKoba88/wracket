@@ -7,11 +7,15 @@ export default async function ShopPage() {
     NEXT_PUBLIC_STORAGE_SUPABASE_URL: !!process.env.NEXT_PUBLIC_STORAGE_SUPABASE_URL,
     NEXT_PUBLIC_STORAGE_SUPABASE_PUBLISHABLE_KEY: !!process.env.NEXT_PUBLIC_STORAGE_SUPABASE_PUBLISHABLE_KEY,
   });
-  const items = await getInventoryItems();
 
   return (
     <Suspense fallback="Loading...">
-      <Storefront items={items} />
+      <StorefrontLoader />
     </Suspense>
   );
+
+  async function StorefrontLoader() {
+    const items = await getInventoryItems();
+    return <Storefront items={items} />;
+  }
 }
