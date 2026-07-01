@@ -6,12 +6,12 @@ import { ItemPreview } from './item-preview';
 // change scrolling to be an arrow for desktop and keep draggable for mobile
 
 interface Item {
-    id?: string  | number;
+    id?: number;
     name? : string;
-    description?: string;
+    keywords?: string;
     quantity?: number;
     price?: number;
-    img?: string;
+    img_url?: string;
     category?: string;
     type?: string;
 }
@@ -68,7 +68,7 @@ export const InventoryContainer: React.FC<InventoryContainerProps> = ({
     const filteredAll = items.filter(item => {
         const matchesCategory = item.category === selected;
         const matchesSearch = item.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            item.description?.toLowerCase().includes(searchQuery.toLowerCase());
+                            item.keywords?.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
     });                 
     

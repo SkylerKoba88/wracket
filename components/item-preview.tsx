@@ -4,12 +4,12 @@ import './../ItemPreview.css';
 import Link from 'next/link';
 
 interface Item {
-    id?: string  | number;
+    id?: number;
     name? : string;
-    description?: string;
+    keywords?: string;
     quantity?: number;
     price?: number;
-    img?: string;
+    img_url?: string;
 }
 interface ItemPreviewProps {
     item?: Item;
@@ -19,10 +19,10 @@ export const ItemPreview: React.FC<ItemPreviewProps> = ({
     item = {
         id:0,
         name: "Product",
-        description: "",
+        keywords: "",
         quantity: 0,
         price: 5.00,
-        img: ""
+        img_url: ""
     }
 }) => {
     const [isSoldOut, setIsSoldOut] = useState(false);
@@ -35,7 +35,7 @@ export const ItemPreview: React.FC<ItemPreviewProps> = ({
         <Link href={`/product/${item.id}`}>
             <div className="item-preview">
                 <div className={`img-container ${isSoldOut ? 'soldout' : ''}`}>
-                    <img id="product" src={item.img} alt={item.name} />
+                    <img id="product" src={item.img_url} alt={item.name} />
                     <div className="overlay">
                         <p>SOLD</p>
                         <img src="/soldout.svg" alt="sold out" width="100" height="100"/>
@@ -46,7 +46,7 @@ export const ItemPreview: React.FC<ItemPreviewProps> = ({
                 <div className="text">
                     <h4>{item.name}</h4>
                     <div className="item-details">
-                        <p>{item.description}</p>
+                        <p>{item.keywords}</p>
                         <p style={{ width: '50%', textAlign: 'end'}}>Price: ${item.price}</p>
                     </div>
                 </div>
