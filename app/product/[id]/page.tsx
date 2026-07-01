@@ -5,7 +5,7 @@ import { getInventoryItem, getInventoryItems } from "@/lib/supabase/products";
 export async function generateStaticParams() {
   const items = await getInventoryItems();
   return items.map((item) => ({
-    id: item.id,
+    id: String(item.id),
   }));
 }
 
