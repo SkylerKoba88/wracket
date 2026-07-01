@@ -33,6 +33,7 @@ const TypeSection: React.FC<{type: string, sectionItems: Item[]}> = ({type, sect
                 : scrollContainerRef.current.scrollLeft + scrollAmount;
             scrollContainerRef.current.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
         }
+    }
 
         return (
             <div className="type-section">
@@ -50,7 +51,7 @@ const TypeSection: React.FC<{type: string, sectionItems: Item[]}> = ({type, sect
                 </div>
             </div>
         );
-}}
+}
 
 export const InventoryContainer: React.FC<InventoryContainerProps> = ({
     searchQuery = '',
