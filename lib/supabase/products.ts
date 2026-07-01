@@ -1,16 +1,16 @@
 export type InventoryItem = {
   id: number;
-  created_at?: string;
+  created_at?: Date;
   name: string;
   img_url?: string;
-  keywords: string;
-  description: string;
-  price: number;
   category: string;
   type: string;
-  quantity: number;
+  keywords: string;
+  description: string;
   materials: string[];
   sizes: string[];
+  quantity: number;
+  price: number;
 };
 
 const fallbackProducts: InventoryItem[] = [
@@ -68,7 +68,7 @@ function normalizeProduct(item: Record<string, unknown>): InventoryItem {
     category: String(item.category ?? "misc"),
     type: String(item.type ?? "misc"),
     quantity: Number(item.quantity ?? 0),
-    img_url: String(item.img ?? "https://placehold.co/900x900?text=Wracket"),
+    img_url: String(item.img_url ?? "https://placehold.co/900x900?text=Wracket"),
     materials: Array.isArray(item.materials)
       ? item.materials.map((entry) => String(entry))
       : [],
@@ -87,7 +87,7 @@ async function fetchSupabaseInventory(table: string): Promise<InventoryItem[]> {
   }
 
   const response = await fetch(
-    `${supabaseUrl}/rest/v1/${table}?select=id,name,description,long_description,price,category,type,quantity,img,materials,sizes&order=id.asc`,
+    `${supabaseUrl}/rest/v1/${table}?select=id,name,img_url,category,type,keywords,description,materials,sizes&order=id.asc,quantity,price`,
     {
       headers: {
         apikey: supabaseKey,
