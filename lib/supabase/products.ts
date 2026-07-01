@@ -97,8 +97,8 @@ function normalizeProduct(item: Record<string, unknown>): InventoryItem {
 }
 
 async function fetchSupabaseInventory(table: string): Promise<InventoryItem[]> {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  const supabaseUrl = process.env.NEXT_PUBLIC_STORAGE_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_STORAGE_SUPABASE_PUBLISHABLE_KEY;
 
   if (!supabaseUrl || !supabaseKey) {
     console.log("Missing Supabase configuration.");
