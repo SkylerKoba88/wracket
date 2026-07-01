@@ -12,10 +12,17 @@ export async function generateStaticParams() {
 export default async function ProductPage({
   params,
 }: {
-  params: Promise<{ id: number }>;
+  params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const item = await getInventoryItem(id);
+
+  const numericId = Number(id)
+
+  if (isNaN(numericId)) {
+    notFound();
+  }
+
+  const item = await getInventoryItem(numericId);
 
   if (!item) {
     notFound();
