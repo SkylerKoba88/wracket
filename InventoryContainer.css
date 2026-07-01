@@ -70,6 +70,7 @@
             touch-action: pan-x;
             cursor: grab;
             user-select: none;
+            width: 100%;
         }
         .type-items::-webkit-scrollbar {
             height: 0;

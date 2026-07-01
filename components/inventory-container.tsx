@@ -38,7 +38,7 @@ const TypeSection: React.FC<{type: string, sectionItems: Item[]}> = ({type, sect
         return (
             <div className="type-section">
                 <h3>{type}</h3>
-                <div className="type-scroll">
+                <div className="b">
                     <button className="scroll-button left" onClick={() => scroll('left')}>&#8249;</button>
                 </div>
                 <div className="type-items" ref={scrollContainerRef}>
@@ -46,7 +46,7 @@ const TypeSection: React.FC<{type: string, sectionItems: Item[]}> = ({type, sect
                         <ItemPreview key={item.id} item={item}/>
                     ))}
                 </div>
-                <div className="type-scroll">
+                <div className="b">
                     <button className="scroll-button right" onClick={() => scroll('right')}>&#8250;</button>
                 </div>
             </div>
