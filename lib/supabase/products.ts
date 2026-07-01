@@ -59,22 +59,40 @@ const fallbackProducts: InventoryItem[] = [
 ];
 
 function normalizeProduct(item: Record<string, unknown>): InventoryItem {
+  let parsedMaterials: string[] = [];
+  if (typeof item.materials === "string") {
+    try {
+      parsedMaterials = JSON.parse(item.materials);
+    } catch {
+      parsedMaterials = [item.materials];
+    }
+  } else if (Array.isArray(item.materials)) {
+    parsedMaterials = item.materials.map(String);
+  }
+
+  let parsedSizes: string[] = [];
+  if (typeof item.sizes === "string") {
+    try {
+      parsedSizes = JSON.parse(item.sizes);
+    } catch {
+      parsedSizes = [item.sizes];
+    }
+  } else if (Array.isArray(item.sizes)) {
+    parsedSizes = item.sizes.map(String);
+  }
+
   return {
     id: Number(item.id ?? 0),
     name: String(item.name ?? "Untitled item"),
-    keywords: String(item.description ?? "A handcrafted piece from Wracket."),
-    description: String(item.long_description ?? item.longDescription ?? ""),
+    keywords: String(item.keywords ?? ""),
+    description: String(item.description ?? "A handcrafted piece from Wracket."),
     price: Number(item.price ?? 0),
     category: String(item.category ?? "misc"),
     type: String(item.type ?? "misc"),
     quantity: Number(item.quantity ?? 0),
     img_url: String(item.img_url ?? "https://placehold.co/900x900?text=Wracket"),
-    materials: Array.isArray(item.materials)
-      ? item.materials.map((entry) => String(entry))
-      : [],
-    sizes: Array.isArray(item.sizes)
-      ? item.sizes.map((entry) => String(entry))
-      : [],
+    materials: parsedMaterials,
+    sizes: parsedSizes,
   };
 }
 
@@ -87,7 +105,7 @@ async function fetchSupabaseInventory(table: string): Promise<InventoryItem[]> {
   }
 
   const response = await fetch(
-    `${supabaseUrl}/rest/v1/${table}?select=id,name,img_url,category,type,keywords,description,materials,sizes&order=id.asc,quantity,price`,
+    `${supabaseUrl}/rest/v1/${table}?select=id,name,img_url,category,type,keywords,description,materials,sizes,quantity,price&order=id.asc`,
     {
       headers: {
         apikey: supabaseKey,
