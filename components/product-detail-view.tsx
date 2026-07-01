@@ -11,7 +11,7 @@ export function ProductDetailView({ item }: { item: InventoryItem }) {
 
         <div className="overflow-hidden rounded-[2rem] border border-white/70 bg-white/80 shadow-xl shadow-slate-900/10 backdrop-blur">
           <div className="grid gap-8 p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
-            <img src={item.img} alt={item.name} className="h-[420px] w-full rounded-[1.5rem] object-cover" />
+            <img src={item.img_url} alt={item.name} className="h-[420px] w-full rounded-[1.5rem] object-cover" />
             <div className="flex flex-col justify-between gap-6">
               <div className="space-y-4">
                 <div className="space-y-2">
