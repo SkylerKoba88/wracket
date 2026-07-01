@@ -3,15 +3,9 @@ import { ProductDetailView } from "@/components/product-detail-view";
 import { getInventoryItem, getInventoryItems } from "@/lib/supabase/products";
 import { Suspense } from "react";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
 export default async function ProductPage({
   params,
-}: PageProps) {
+}: {params: Promise<{ id: string }>}) {
   const { id } = await params;
 
   const numericId = Number(id)
