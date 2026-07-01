@@ -2,12 +2,7 @@ import { notFound } from "next/navigation";
 import { ProductDetailView } from "@/components/product-detail-view";
 import { getInventoryItem, getInventoryItems } from "@/lib/supabase/products";
 
-export async function generateStaticParams() {
-  const items = await getInventoryItems();
-  return items.map((item) => ({
-    id: String(item.id),
-  }));
-}
+export const dynamic = 'force-dynamic';
 
 export default async function ProductPage({
   params,
