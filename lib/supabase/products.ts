@@ -1,57 +1,58 @@
 export type InventoryItem = {
-  id: string;
+  id: number;
+  created_at?: string;
   name: string;
+  img_url?: string;
+  keywords: string;
   description: string;
-  longDescription: string;
   price: number;
   category: string;
   type: string;
   quantity: number;
-  img: string;
   materials: string[];
   sizes: string[];
 };
 
 const fallbackProducts: InventoryItem[] = [
   {
-    id: "studio-print",
+    id: 1,
     name: "Studio Print",
-    description: "Limited edition art print",
-    longDescription:
+    keywords: "Limited edition art print",
+    description:
       "A vibrant print inspired by the studio practice behind Wracket, ready to frame and display.",
     price: 24,
     category: "prints",
     type: "art",
     quantity: 12,
-    img: "https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80",
+    img_url: "https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80",
     materials: ["Archival paper", "Ink"],
     sizes: ["8x10", "11x14"],
   },
   {
-    id: "carry-bag",
+    id: 2,
     name: "Studio Carry Bag",
-    description: "Compact everyday carry",
-    longDescription:
+    keywords: "Compact everyday carry",
+    description:
       "A simple carry pouch designed to hold your essentials while keeping the look minimal and functional.",
     price: 28,
     category: "functional",
     type: "accessories",
     quantity: 5,
-    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
+    img_url: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
     materials: ["Canvas", "Recycled lining"],
     sizes: ["One size"],
   },
   {
-    id: "archive-pin",
+    id: 3,
     name: "Archive Pin",
-    description: "Small statement piece",
-    longDescription:
+    keywords: "Small statement piece",
+    description:
       "A soft enamel pin that brings a little personality to jackets, bags, and layering moments.",
     price: 14,
     category: "misc",
     type: "pins",
     quantity: 0,
-    img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80",
+    img_url: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80",
     materials: ["Enamel", "Metal back"],
     sizes: ["One size"],
   },
@@ -59,15 +60,15 @@ const fallbackProducts: InventoryItem[] = [
 
 function normalizeProduct(item: Record<string, unknown>): InventoryItem {
   return {
-    id: String(item.id ?? ""),
+    id: Number(item.id ?? 0),
     name: String(item.name ?? "Untitled item"),
-    description: String(item.description ?? "A handcrafted piece from Wracket."),
-    longDescription: String(item.long_description ?? item.longDescription ?? ""),
+    keywords: String(item.description ?? "A handcrafted piece from Wracket."),
+    description: String(item.long_description ?? item.longDescription ?? ""),
     price: Number(item.price ?? 0),
     category: String(item.category ?? "misc"),
     type: String(item.type ?? "misc"),
     quantity: Number(item.quantity ?? 0),
-    img: String(item.img ?? "https://placehold.co/900x900?text=Wracket"),
+    img_url: String(item.img ?? "https://placehold.co/900x900?text=Wracket"),
     materials: Array.isArray(item.materials)
       ? item.materials.map((entry) => String(entry))
       : [],
@@ -119,7 +120,7 @@ export async function getInventoryItems(): Promise<InventoryItem[]> {
   return fallbackProducts;
 }
 
-export async function getInventoryItem(id: string): Promise<InventoryItem | null> {
+export async function getInventoryItem(id: number): Promise<InventoryItem | null> {
   const items = await getInventoryItems();
   return items.find((item) => item.id === id) ?? null;
 }

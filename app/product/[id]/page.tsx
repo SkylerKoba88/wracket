@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 export default async function ProductPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: number }>;
 }) {
   const { id } = await params;
   const item = await getInventoryItem(id);

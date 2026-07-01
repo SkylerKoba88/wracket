@@ -19,12 +19,12 @@ export function ProductDetailView({ item }: { item: InventoryItem }) {
                     {item.category}
                   </p>
                   <h1 className="text-4xl font-semibold">{item.name}</h1>
-                  <p className="text-lg text-slate-700">{item.longDescription}</p>
+                  <p className="text-lg text-slate-700">{item.description}</p>
                 </div>
 
                 <div className="rounded-[1.25rem] bg-slate-50 p-4">
                   <p className="text-sm text-slate-500">Description</p>
-                  <p className="mt-2 text-slate-700">{item.description}</p>
+                  <p className="mt-2 text-slate-700">{item.keywords}</p>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
