@@ -99,6 +99,7 @@ function normalizeProduct(item: Record<string, unknown>): InventoryItem {
 async function fetchSupabaseInventory(table: string): Promise<InventoryItem[]> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  console.log("fetching from supabase with url:", supabaseUrl, "and key:", supabaseKey);
 
   if (!supabaseUrl || !supabaseKey) {
     return [];
