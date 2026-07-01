@@ -1,6 +1,13 @@
 import { notFound } from "next/navigation";
 import { ProductDetailView } from "@/components/product-detail-view";
-import { getInventoryItem } from "@/lib/supabase/products";
+import { getInventoryItem, getInventoryItems } from "@/lib/supabase/products";
+
+export async function generateStaticParams() {
+  const items = await getInventoryItems();
+  return items.map((item) => ({
+    id: item.id,
+  }));
+}
 
 export default async function ProductPage({
   params,
