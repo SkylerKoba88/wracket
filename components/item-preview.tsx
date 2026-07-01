@@ -25,7 +25,7 @@ export const ItemPreview: React.FC<ItemPreviewProps> = ({
     }, [item.quantity]);
 
     return(
-        <Link href={`/product/${item.id}`}>
+        <Link href={`/shop/${item.id}`}>
             <div className="item-preview">
                 <div className={`img-container ${isSoldOut ? 'soldout' : ''}`}>
                     <img id="product" src={item.img_url} alt={item.name} />
