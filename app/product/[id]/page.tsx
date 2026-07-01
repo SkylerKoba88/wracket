@@ -6,22 +6,22 @@ import { Suspense } from "react";
 export default async function ProductPage({
   params,
 }: {params: Promise<{ id: string }>}) {
-  const { id } = await params;
 
-  const numericId = Number(id)
+    return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductLoader paramsPromise={params} />
+    </Suspense>
+  );
+}
+
+async function ProductLoader({ paramsPromise }: { paramsPromise: Promise<{ id: string }> }) {
+  const { id } = await paramsPromise;
+  const numericId = Number(id);
 
   if (isNaN(numericId)) {
     notFound();
   }
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ProductLoader numericId={numericId} />
-    </Suspense>
-  );
-}
-
-async function ProductLoader({ numericId }: { numericId: number }) {
   const item = await getInventoryItem(numericId);
 
   if (!item) {
