@@ -99,14 +99,16 @@ function normalizeProduct(item: Record<string, unknown>): InventoryItem {
 async function fetchSupabaseInventory(table: string): Promise<InventoryItem[]> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-  console.log("fetching from supabase with url:", supabaseUrl, "and key:", supabaseKey);
 
   if (!supabaseUrl || !supabaseKey) {
+    console.log("Missing Supabase configuration.");
     return [];
   }
+  
+  const url = `${supabaseUrl}/rest/v1/${table}?select=id,name,img_url,category,type,keywords,description,materials,sizes,quantity,price&order=id.asc`;
 
   const response = await fetch(
-    `${supabaseUrl}/rest/v1/${table}?select=id,name,img_url,category,type,keywords,description,materials,sizes,quantity,price&order=id.asc`,
+    url,
     {
       headers: {
         apikey: supabaseKey,
@@ -117,6 +119,8 @@ async function fetchSupabaseInventory(table: string): Promise<InventoryItem[]> {
   );
 
   if (!response.ok) {
+    const text = await response.text().catch(() => "");
+    console.log(`Failed to fetch from Supabase table "${table}". Status: ${response.status}. Response: ${text}`);
     return [];
   }
 
