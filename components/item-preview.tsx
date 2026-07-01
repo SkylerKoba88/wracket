@@ -1,6 +1,7 @@
 "use client";
 import React, {useState, ReactNode, useEffect} from 'react';
 import './../ItemPreview.css';
+import Link from 'next/link';
 
 interface Item {
     id?: string  | number;
@@ -27,19 +28,12 @@ export const ItemPreview: React.FC<ItemPreviewProps> = ({
     const [isSoldOut, setIsSoldOut] = useState(false);
 
     useEffect(() => {
-        if (item.quantity === 0) {
-            setIsSoldOut(true);
-        } else {
-            setIsSoldOut(false);
-        }
+        setIsSoldOut(item.quantity === 0);
     }, [item.quantity]);
 
     return(
-        <div className="item-preview" onClick={() => {
-                if (item?.id) {
-                    window.location.href = `/pages/product-detail.html?id=${item.id}`;
-                }
-            }}>
+        <Link href={`/product/${item.id}`}>
+            <div className="item-preview">
                 <div className={`img-container ${isSoldOut ? 'soldout' : ''}`}>
                     <img id="product" src={item.img} alt={item.name} />
                     <div className="overlay">
@@ -57,5 +51,6 @@ export const ItemPreview: React.FC<ItemPreviewProps> = ({
                     </div>
                 </div>
             </div>
+        </Link>
     );
 };
