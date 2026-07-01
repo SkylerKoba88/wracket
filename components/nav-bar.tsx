@@ -20,9 +20,9 @@ export const NavBar: React.FC<NavBarProps> = ({
         <nav>
             <Link href="/">Home</Link>
             <Link href="/shop">Shop</Link>
-            <Link href="/pages/comingsoon.html">About</Link>
-            <Link href="/pages/maintenance.html">Help</Link>
-            <Link href="/pages/product-detail.html">Cart</Link>
+            <Link href="/">About</Link>
+            <Link href="/">Help</Link>
+            <Link href="/">Cart</Link>
         </nav>
 );
 };
