@@ -2,7 +2,7 @@ export type InventoryItem = {
   id: number;
   created_at?: Date;
   name: string;
-  img_url?: string;
+  img_url: string;
   category: string;
   type: string;
   keywords: string;
