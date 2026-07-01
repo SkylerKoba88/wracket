@@ -4,26 +4,19 @@ import './../ItemPreview.css';
 import Link from 'next/link';
 
 interface Item {
-    id?: number;
-    name? : string;
-    keywords?: string;
-    quantity?: number;
-    price?: number;
-    img_url?: string;
+    id: number;
+    name: string;
+    keywords: string;
+    quantity: number;
+    price: number;
+    img_url: string;
 }
 interface ItemPreviewProps {
-    item?: Item;
+    item: Item;
 }
 
 export const ItemPreview: React.FC<ItemPreviewProps> = ({
-    item = {
-        id:0,
-        name: "Product",
-        keywords: "",
-        quantity: 0,
-        price: 5.00,
-        img_url: ""
-    }
+    item
 }) => {
     const [isSoldOut, setIsSoldOut] = useState(false);
 

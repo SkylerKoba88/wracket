@@ -6,14 +6,14 @@ import { ItemPreview } from './item-preview';
 // change scrolling to be an arrow for desktop and keep draggable for mobile
 
 interface Item {
-    id?: number;
-    name? : string;
-    keywords?: string;
-    quantity?: number;
-    price?: number;
-    img_url?: string;
-    category?: string;
-    type?: string;
+    id: number;
+    name: string;
+    keywords: string;
+    quantity: number;
+    price: number;
+    img_url: string;
+    category: string;
+    type: string;
 }
 
 interface InventoryContainerProps {
